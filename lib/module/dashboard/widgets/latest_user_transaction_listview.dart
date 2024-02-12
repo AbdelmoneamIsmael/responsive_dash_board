@@ -29,16 +29,12 @@ class _LatestUserTransactionListViewState
   ];
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: 150,
-        child: ListView.separated(
-          padding: EdgeInsets.zero,
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) =>
-              IntrinsicWidth(child: UserInfoListTile(userModel: users[index])),
-          separatorBuilder: (context, index) => const SizedBox(width: 12),
-          itemCount: users.length,
-        ));
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: List.generate(users.length, (index) => IntrinsicWidth(child: UserInfoListTile(userModel: users[index],),),),
+      ),
+    );
+
   }
 }
